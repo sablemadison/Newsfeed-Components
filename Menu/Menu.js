@@ -36,20 +36,39 @@ let menuItems = [
 const createMenu = (arr) => {
   //create  menu element
 const menuDiv = document.createElement('div')
+const list = document.createElement('ul')
 
 // iterate over array to create list items
-arr.forEach( item => {  const item =  document.createElement('li')})
+arr.forEach( li => {  
+  let listItem =  document.createElement('li');
+  listItem.textContent = li;
+  list.appendChild(listItem);
+  
+})
+
+// append list to menu div
+menuDiv.appendChild(list)
 
 // add class name
 menuDiv.classList.add('menu')
+
+//add event listener to menu button
+menuButton.addEventListener('click', () => {
+  menuDiv.classList.toggle('menu--open') 
+})
 return menuDiv;
 }
 
+//select menu button
 const menuButton = document.querySelector('.menu-button')
-menuButton.addEventListener('click', () => {menuButton.classList.toggle('menu--open') })
 
+
+//select parent element already on DOM(the header)
 const header = document.querySelector('.header')
+
+// use function to create compoment and add it to DOM by appending to parent
 const newMenu = createMenu(menuItems)
 
-header.appendChild('newMenu')
+header.appendChild(newMenu)
 
+console.log(newMenu)

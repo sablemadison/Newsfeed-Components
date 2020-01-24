@@ -174,22 +174,25 @@ const createArticle = (title,date, par1, par2, par3) => {
   articleContainer.appendChild(spanButton)
 
   // add event listener to article div
-  spanButton.addEventListener('click', () => { spanButton.classList.toggle('article-open')})
+  spanButton.addEventListener('click', () => { articleContainer.classList.toggle('article-open')})
 
   // add text content
 articleTitle.textContent = title;
 articleDate.textContent = date;
-articleP1.textContent= par1;
+articleP1.textContent = par1;
 articleP2.textContent = par2;
 articleP3.textContent = par3;
+spanButton.textContent = 'expand'
+
 console.log('button', spanButton)
 //return component
   return articleContainer;
  
 }
+// select parent element on DOM and map through array to create article components
 const articlesDiv = document.querySelector('.articles')
 data.map(article => {
-  const newArticle= createArticle(article.title, article.date, article.firstParagraph, article.secondParagraph, article.thirdParagraph);
+  const newArticle = createArticle(article.title, article.date, article.firstParagraph, article.secondParagraph, article.thirdParagraph);
   articlesDiv.appendChild(newArticle);
  })
 
